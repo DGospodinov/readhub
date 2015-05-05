@@ -325,12 +325,7 @@ module.exports = function (grunt) {
                 'svgmin'
             ]
         },
-        karma: {
-            unit: {
-                configFile: 'src/test/javascript/karma.conf.js',
-                singleRun: true
-            }
-        },
+
         cdnify: {
             dist: {
                 html: ['<%= yeoman.dist %>/*.html']
@@ -414,7 +409,7 @@ module.exports = function (grunt) {
         'wiredep:test',
         'ngconstant:dev',
         'concurrent:test',
-        'karma'
+
     ]);
 
     grunt.registerTask('build', [
