@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         name="CM1"
+         updateCheck="false"
+         maxBytesLocalHeap="16M">
+
+    <!--
+      This is a default configuration, it is re-configured by the CacheConfiguration Spring Bean, using the
+      properties from the resources/config/*.yml files.
+    -->
+
+    <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache
+            eternal="false"
+            overflowToDisk="false"
+            />
+
+    <cache name="app.domain.User"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="app.domain.Authority"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="app.domain.User.authorities"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="app.domain.PersistentToken"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="app.domain.User.persistentTokens"
+           timeToLiveSeconds="3600">
+    </cache>
+    <cache name="app.domain.Feed"
+           timeToLiveSeconds="3600">
+    </cache>
+    <cache name="app.domain.Readlater"
+           timeToLiveSeconds="3600">
+    </cache>
+    <cache name="app.domain.Item"
+           timeToLiveSeconds="3600">
+    </cache>
+    <cache name="app.domain.Category"
+           timeToLiveSeconds="3600">
+    </cache>
+    <cache name="app.domain.User.readlaterSet"
+           timeToLiveSeconds="3600">
+    </cache>
+    <cache name="app.domain.Category.feeds"
+           timeToLiveSeconds="3600">
+    </cache>
+    <cache name="app.domain.Feed.items"
+           timeToLiveSeconds="3600">
+    </cache>
+    <cache name="app.domain.Item.readlaterList"
+           timeToLiveSeconds="3600">
+    </cache>
+</ehcache>

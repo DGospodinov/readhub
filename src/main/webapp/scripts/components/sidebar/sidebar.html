@@ -1,0 +1,203 @@
+
+<header id="sidebar-header" class="clearfix"  ng-switch="isAuthenticated()">
+    <div class="sidebar-logo">
+        <h2><a href="#/">Read<strong>Hub</strong></a></h2>
+    </div>
+</header>
+<div id="sidebar-content" ng-switch="isAuthenticated()">
+
+    <div id="subscribe" ng-switch-when="true">
+        <button class="btn btn-primary btn-feed" data-toggle="modal" data-target="#saveFeedModal" ng-click="clearFeed()">
+            <span>Subscribe</span>
+        </button>
+        <button class="btn btn-primary btn-category" data-toggle="modal" data-target="#saveCategoryModal" ng-click="clearCat()">
+            <span>+ Category</span>
+        </button>
+    </div>
+    <li ui-sref-active="active" ng-switch-when="true" ng-click="settings()">
+        <i class="fa fa-cog">
+            <a>Account</a>
+        </i>
+    </li>
+    <ul class="settings" ng-switch-when="true">
+        <li ui-sref-active="active">
+            <i class="fa fa-angle-right">
+                <a ui-sref="settings">
+                    <span >Settings</span>
+                </a>
+            </i>
+        </li>
+        <li ui-sref-active="active" >
+            <i class="fa fa-angle-right">
+                <a ui-sref="password">
+                    <span>Password</span>
+                </a>
+            </i>
+        </li>
+        <li ui-sref-active="active" >
+            <i class="fa fa-angle-right">
+                <a ui-sref="sessions">
+                    <span>Sessions</span>
+                </a>
+            </i>
+        </li>
+        <li ui-sref-active="active" >
+            <i class="fa fa-angle-right">
+                <a href="" ng-click="logout()">
+                    <span>Log out</span>
+                </a>
+            </i>
+        </li>
+    </ul>
+    <li ng-class="{active: $state.includes('admin')}"  ng-switch-when="true" has-role="ROLE_ADMIN" ng-click="administration()">
+        <i class="fa fa-user">
+            <a>Administration</a>
+        </i>
+    </li>
+    <ul class="administration">
+        <li ui-sref-active="active">
+            <i class="fa fa-angle-right">
+                <a ui-sref="metrics">
+                    <span>Metrics</span>
+                </a>
+            </i>
+        </li>
+        <li ui-sref-active="active">
+            <i class="fa fa-angle-right">
+                <a ui-sref="health">
+                    <span>Health</span>
+                </a>
+            </i>
+        </li>
+        <li>
+            <i class="fa fa-angle-right">
+                <a ui-sref="configuration">
+                    <span>Configuration</span>
+                </a>
+            </i>
+        </li>
+        <li ui-sref-active="active">
+            <i class="fa fa-angle-right">
+                <a ui-sref="audits">
+                    <span>Audits</span>
+                </a>
+            </i>
+        </li>
+        <li ui-sref-active="active">
+            <i class="fa fa-angle-right">
+                <a ui-sref="logs">
+                    <span>Logs</span>
+                </a>
+            </i>
+        </li>
+        <li ui-sref-active="active">
+            <i class="fa fa-angle-right">
+                <a ui-sref="docs">
+                    <span>API Docs</span>
+                </a>
+            </i>
+        </li>
+    </ul>
+    <li ui-sref-active="active" ng-switch-when="true">
+        <i class="fa fa-bars">
+            <a ui-sref="item">
+                <span>All News</span>
+            </a>
+        </i>
+    </li>
+    <li ui-sref-active="active" ng-switch-when="true">
+        <i class="fa fa-clock-o">
+            <a ui-sref="readlater">
+                <span>Saved for later</span>
+            </a>
+        </i>
+    </li>
+        <li ng-repeat="category in categorys" ui-sref-active="active" ng-switch-when="true" >
+            <i class="fa fa-folder-o" ng-click="loadListFeeds(category.id)">
+            </i>
+            <a ui-sref="categoryDetail({id:category.id})">
+                <span>{{category.categoryName}}</span>
+            </a>
+        </li>
+            <ul class="listFeed">
+                <li ng-repeat="categoryFeed in listFeeds" ui-sref-active="active">
+                    <i class="fa fa-rss">
+                        <a ui-sref="feedDetail({id:categoryFeed.id})">
+                            {{categoryFeed.name |limitTo:25}}
+                        </a>
+                    </i>
+                </li>
+            </ul>
+    <ul>
+    <li ng-repeat="feed in feeds" ui-sref-active="active" ng-switch-when="true">
+            <i class="fa fa-rss">
+               <a ui-sref="feedDetail({id:feed.id})">
+                <span>{{feed.name | limitTo:25}}</span>
+               </a>
+            </i>
+        </li>
+    </ul>
+
+
+    <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="login"></span>
+        &#xA0;<span >Login</span></a></li>
+    <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="register"><span>Register</span></a></li>
+    <li ng-class="{active: $state.includes('account')}" class="dropdown pointer" ng-switch-when="true" >
+</div>
+<footer id="sidebar-footer">
+
+</footer>
+<div class="modal fade" id="saveFeedModal" tabindex="-1" role="dialog" aria-labelledby="myFeedLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="editForm" role="form" novalidate ng-submit="createFeed()">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="url" ng-model="feed.url" placeholder="Url">
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select class="form-control" name="category" ng-model="feed.category.id" ng-options="category.id as category.categoryName for category in categorys">
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-feed">
+                        &nbsp;<span>Save</span>
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                        &nbsp;<span translate="entity.action.cancel">Cancel</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="saveCategoryModal" tabindex="-1" role="dialog" aria-labelledby="myCategoryLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="editForm" role="form" novalidate ng-submit="createCat()" show-validation>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="categoryName" ng-model="category.categoryName" placeholder="Name">
+
+                        <div ng-show="editForm.categoryName.$invalid">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-feed">
+                        &nbsp;<span>Save</span>
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                        &nbsp;<span translate="entity.action.cancel">Cancel</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

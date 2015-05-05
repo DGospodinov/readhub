@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span translate="readhubApp.item.detail.title">Item</span> {{item.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="readhubApp.item.title">Title</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{item.title}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="readhubApp.item.desription">Desription</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{item.desription}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="readhubApp.item.pubDate">PubDate</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{item.pubDate}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="readhubApp.item.link">Link</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{item.link}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="readhubApp.item.feed">feed</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{item.feed.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="item"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

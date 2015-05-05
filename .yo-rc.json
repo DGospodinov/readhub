@@ -1,0 +1,20 @@
+{
+  "generator-jhipster": {
+    "baseName": "ReadHub",
+    "packageName": "app",
+    "packageFolder": "app",
+    "authenticationType": "session",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "7",
+    "rememberMeKey": "82ffe8dd344954095ce25462ce14c50b177924f5",
+    "searchEngine": "no"
+  }
+}

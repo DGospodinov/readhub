@@ -1,0 +1,71 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "feed",
+            "relationshipNameCapitalized": "Feed",
+            "relationshipFieldName": "feed",
+            "otherEntityName": "feed",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Feed",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "readlater",
+            "relationshipNameCapitalized": "Readlater",
+            "relationshipFieldName": "readlater",
+            "otherEntityName": "readlater",
+            "relationshipType": "one-to-many",
+            "otherEntityNameCapitalized": "Readlater"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Title",
+            "fieldNameUnderscored": "title",
+            "fieldInJavaBeanMethod": "Title",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "desription",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Desription",
+            "fieldNameUnderscored": "desription",
+            "fieldInJavaBeanMethod": "Desription",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "pubDate",
+            "fieldType": "DateTime",
+            "fieldNameCapitalized": "PubDate",
+            "fieldNameUnderscored": "pub_date",
+            "fieldInJavaBeanMethod": "PubDate",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "link",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Link",
+            "fieldNameUnderscored": "link",
+            "fieldInJavaBeanMethod": "Link",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": true,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": true,
+    "fieldsContainDate": false,
+    "changelogDate": "20150416150835",
+    "pagination": "no",
+    "validation": false
+}

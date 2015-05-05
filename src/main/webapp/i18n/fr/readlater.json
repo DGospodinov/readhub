@@ -1,0 +1,20 @@
+{
+    "readhubApp": {
+        "readlater" : {
+            "home": {
+                "title": "Readlaters",
+                "createLabel": "Créer un nouveau Readlater",
+                "createOrEditLabel": "Créer ou éditer un Readlater"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Readlater {{ id }} ?"
+            },
+            "detail": {
+                "title": "Readlater"
+            },
+            "item": "item",
+            "user": "user"
+        }
+    }
+}
+

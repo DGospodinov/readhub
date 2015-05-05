@@ -1,0 +1,82 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="pull-right">
+        <a class="list-icon" ng-class="{active: layout == 'list'}" ng-click="layout = 'list'"><i class="fa fa-th-list"></i></a>
+        <a class="grid-icon" ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'"><i class="fa fa-th fa-3x"></i></a>
+    </div>
+    <div class="pull-left">
+        <a ng-click="fullscreen()"  class="btn-toggle"></a>
+    </div>
+</nav>
+<div class="list" ng-show="layout == 'list'" >
+    <article class="col-sm-9"  ng-repeat="item in items |orderBy: '-pubDate' ">
+        <header>
+            <h1 class="title"><a href="{{item.link}}" target="_blank">{{item.title}}</a></h1>
+        </header>
+        <div class="content">
+            <p class="description" ng-bind-html="item.desription"></p>
+            <ul class="meta">
+                <li>{{item.feed.name | limitTo:25}}</li>
+                <li>{{item.pubDate |date:"dd/MMM/yy 'at' H:mma" }}</li>
+                <li>{{item.author}}</li>
+                <li class="readlater">
+                    <form name="editForm" role="form" novalidate ng-submit="create()">
+                        <input type="radio" value="{{item.id}}" checked="checked" ng-model="readlater.item.id">
+                        <button type="submit" class="btn-readlater">
+                            <span>Read later</span>
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </article>
+</div>
+    <div ng-show="layout == 'grid'" class="grid">
+    <div class="col-sm-4 item " ng-repeat="item in items |orderBy: '-pubDate'">
+        <h2><a href="{{item.link}}" target="_blank">{{item.title}}</a></h2>
+        <p class="description" ng-bind-html="item.desription"></p>
+        <ul class="meta">
+            <li>{{item.feed.name |limitTo:25}}</li>
+            <li class="readlater">
+                <form name="editForm" role="form" novalidate ng-submit="create()">
+                    <input type="radio" value="{{item.id}}" checked="checked" ng-model="readlater.item.id">
+                    <button type="submit" class="btn-readlater">
+                        <span>Read later</span>
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="modal fade" id="saveReadlaterModal" tabindex="-1" role="dialog" aria-labelledby="myReadlaterLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="editForm" role="form" novalidate ng-submit="create()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                            ng-click="clear()">&times;</button>
+                    <h4 class="modal-title" id="myReadlaterLabel">Create or edit a Readlater</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label translate="readhubApp.readlater.item">item</label>
+                        <select class="form-control" name="item" ng-model="readlater.item.id" ng-options="item.id as item.title for item in items">
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span >Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span>Save</span>
+                        </button>
+                    </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

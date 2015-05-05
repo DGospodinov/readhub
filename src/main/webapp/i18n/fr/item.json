@@ -1,0 +1,23 @@
+{
+    "readhubApp": {
+        "item" : {
+            "home": {
+                "title": "Items",
+                "createLabel": "Créer un nouveau Item",
+                "createOrEditLabel": "Créer ou éditer un Item"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Item {{ id }} ?"
+            },
+            "detail": {
+                "title": "Item"
+            },
+            "title": "Title",
+            "desription": "Desription",
+            "pubDate": "PubDate",
+            "link": "Link",
+            "feed": "feed"
+        }
+    }
+}
+

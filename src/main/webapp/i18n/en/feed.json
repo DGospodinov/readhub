@@ -1,0 +1,22 @@
+{
+    "readhubApp": {
+        "feed" : {
+            "home": {
+                "title": "Feeds",
+                "createLabel": "Create a new Feed",
+                "createOrEditLabel": "Create or edit a Feed"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Feed {{ id }}?"
+            },
+            "detail": {
+                "title": "Feed"
+            },
+            "url": "Url",
+            "name": "Name",
+            "user": "user",
+            "item": "item",
+            "category": "category"
+        }
+    }
+}

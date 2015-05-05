@@ -1,0 +1,29 @@
+'use strict';
+
+angular.module('readhubApp')
+    .config(function ($stateProvider) {
+        $stateProvider
+            .state('logs', {
+                parent: 'admin',
+                url: '/logs',
+                data: {
+                    roles: ['ROLE_ADMIN'],
+                    pageTitle: 'logs.title'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'scripts/app/admin/logs/logs.html',
+                        controller: 'LogsController'
+                    },'sidebar@':{
+                        templateUrl: 'scripts/components/sidebar/sidebar.html',
+                        controller: 'SidebarController'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('logs');
+                        return $translate.refresh();
+                    }]
+                }
+            });
+    });

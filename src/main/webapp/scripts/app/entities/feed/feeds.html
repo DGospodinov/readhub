@@ -1,0 +1,82 @@
+<div class="col-sm-12">
+
+    <h2>Subscribe for new feeds</h2>
+    <form name="editForm" role="form" novalidate ng-submit="create()">
+            <div class="form-group">
+                <input type="text" class="form-control" name="url" ng-model="feed.url" placeholder="Feed url">
+            </div>
+            <div class="form-group">
+
+                <select placeholder="Category" class="form-control" name="category" ng-model="feed.category.id" ng-options="category.id as category.categoryName for category in categorys">
+                </select>
+            </div>
+
+
+            <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-feed" ng-clicl="loadAll()">
+               &nbsp;<span translate="entity.action.save">Save</span>
+            </button>
+    </form>
+
+
+    <div class="modal fade" id="deleteFeedConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(feed.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="readhubApp.feed.delete.question" translate-values="{id: '{{feed.id}}'}">Are you sure you want to delete this Feed?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            &nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            &nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="readhubApp.feed.url">Url</th>
+                    <th translate="readhubApp.feed.name">Name</th>
+                    <th translate="readhubApp.feed.category">category</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="feed in feeds">
+                    <td><a ui-sref="feedDetail({id:feed.id})">{{feed.url}}</a></td>
+                    <td>{{feed.name}}</td>
+                    <td>{{feed.category.categoryName}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="feedDetail({id:feed.id})"
+                                class="btn btn-info btn-sm">
+                            &nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="update(feed.id)"
+                                class="btn btn-primary btn-sm">
+                           &nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(feed.id)"
+                                class="btn btn-danger btn-sm">
+                           </span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

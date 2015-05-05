@@ -1,0 +1,45 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "user",
+            "relationshipNameCapitalized": "User",
+            "relationshipFieldName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "User",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "feed",
+            "relationshipNameCapitalized": "Feed",
+            "relationshipFieldName": "feed",
+            "otherEntityName": "feed",
+            "relationshipType": "one-to-many",
+            "otherEntityNameCapitalized": "Feed"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "categoryName",
+            "fieldType": "String",
+            "fieldNameCapitalized": "CategoryName",
+            "fieldNameUnderscored": "category_name",
+            "fieldInJavaBeanMethod": "CategoryName",
+            "fieldValidate": true,
+            "fieldValidateRules": []
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": true,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150426105336",
+    "pagination": "no",
+    "validation": true
+}
